@@ -8,6 +8,7 @@ CHOICES=(
   "bash-git-prompt" "Prompt informatif pour git" OFF
   "blackfire" "Outils de profiling" OFF
   "chrome" "Navigateur web" OFF
+  "clamav" "Antivirus avec GUI" OFF
   "docker" "Logiciel de conteneurisation" OFF
   "golang" "Langage de programmation" OFF
   "mattermost" "Logiciel de messagerie instantanée" OFF
@@ -111,6 +112,10 @@ for SOFTWARE in $SOFTWARES; do
 
       SOFTWARES=("${SOFTWARES[@]/$SOFTWARE}") # Retrait du logiciel de la liste
       APT_INSTALL_STR="${APT_INSTALL_STR} google-chrome-stable"
+      ;;
+    '"clamav"')
+      SOFTWARES=("${SOFTWARES[@]/$SOFTWARE}") # Retrait du logiciel de la liste
+      APT_INSTALL_STR="${APT_INSTALL_STR} clamtk clamtk-gnome"
       ;;
     '"docker"')
       curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
