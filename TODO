@@ -1,2 +1,3 @@
 * Écrire un script bash plus beau
 * Ne pas ré-inclure les lignes dans le `~/.bashrc` si elles y sont déjà
+* Ajout d'une alerte post-installation de Symfony pour demander de lancer `symfony server:ca:install` et paramétrer le serveur mandataire

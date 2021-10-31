@@ -220,9 +220,6 @@ EOT
 
 export PATH="\$HOME/.symfony/bin:\$PATH"
 EOT
-
-      $USER_HOME/.symfony/bin/symfony server:ca:install
-      echo -e "${YELLOW}\nPensez à définir le serveur mandataire en automatique sur l'URL suivante : http://127.0.0.1:7080/proxy.pac${NC}"
       ;;
     '"volta"')
       su -c "curl -s https://get.volta.sh | bash" $USER
