@@ -19,8 +19,8 @@ CHOICES=(
   "spotify" "Lecteur de musique en straming" OFF
   "steam" "Plateforme de jeux-vidéos" OFF
   "symfony" "Binaire Symfony CLI" OFF
+  "tools" "Outils divers (vim, terminator)" OFF
   "toggl" "Tracker de temps" OFF
-  "vim" "Éditeur de texte en console" OFF
   "volta" "Gestionnaire de version de node" OFF
 )
 
@@ -178,9 +178,9 @@ for SOFTWARE in $SOFTWARES; do
       SOFTWARES=("${SOFTWARES[@]/$SOFTWARE}") # Retrait du logiciel de la liste
       APT_INSTALL_STR="${APT_INSTALL_STR} seadrive-gui"
       ;;
-    '"vim"')
+    '"tools"')
       SOFTWARES=("${SOFTWARES[@]/$SOFTWARE}") # Retrait du logiciel de la liste
-      APT_INSTALL_STR="${APT_INSTALL_STR} vim"
+      APT_INSTALL_STR="${APT_INSTALL_STR} terminator vim"
       ;;
   esac
 done
