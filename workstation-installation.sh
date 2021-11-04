@@ -136,40 +136,41 @@ for SOFTWARE in $SOFTWARES; do
 
       SOFTWARES=("${SOFTWARES[@]/$SOFTWARE}") # Retrait du logiciel de la liste
       APT_INSTALL_STR="${APT_INSTALL_STR} \
-      php5.6-bcmath php5.6-cli php5.6-common php5.6-curl php5.6-fpm php5.6-gd \
-      php5.6-imagick php5.6-imap php5.6-intl php5.6-json php5.6-ldap \
-      php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-opcache php5.6-pgsql \
-      php5.6-readline php5.6-soap php5.6-sqlite3 php5.6-xdebug php5.6-xml \
-      php5.6-xsl php5.6-zip \
-      php7.0-bcmath php7.0-cli php7.0-common php7.0-curl php7.0-fpm php7.0-gd \
-      php7.0-imagick php7.0-imap php7.0-intl php7.0-json php7.0-ldap \
-      php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-opcache php7.0-pgsql \
-      php7.0-readline php7.0-soap php7.0-sqlite php7.0-xdebug3 php7.0-xml \
-      php7.0-xsl php7.0-zip \
-      php7.1-bcmath php7.1-cli php7.1-common php7.1-curl php7.1-fpm php7.1-gd \
-      php7.1-imagick php7.1-imap php7.1-intl php7.1-json php7.1-ldap \
-      php7.1-mbstring php7.1-mcrypt php7.1-mysql php7.1-opcache php7.1-pgsql \
-      php7.1-readline php7.1-soap php7.1-sqlite3 php7.1-xdebug php7.1-xml \
-      php7.1-xsl php7.1-zip \
-      php7.2-bcmath php7.2-cli php7.2-common php7.2-curl php7.2-fpm php7.2-gd \
-      php7.2-imagick php7.2-imap php7.2-intl php7.2-json php7.2-ldap \
-      php7.2-mbstring php7.2-mcrypt php7.2-mysql php7.2-opcache php7.2-pgsql \
-      php7.2-readline php7.2-soap php7.2-sqlite3 php7.2-xdebug php7.2-xml \
-      php7.2-xsl php7.2-zip \
-      php7.3-bcmath php7.3-cli php7.3-common php7.3-curl php7.3-fpm php7.3-gd \
-      php7.3-imagick php7.3-imap php7.3-intl php7.3-json php7.3-ldap \
-      php7.3-mbstring php7.3-mcrypt php7.3-mysql php7.3-opcache php7.3-pgsql \
-      php7.3-readline php7.3-soap php7.3-sqlite3 php7.3-xdebug php7.3-xml \
-      php7.3-xsl php7.3-zip \
-      php7.4-bcmath php7.4-cli php7.4-common php7.4-curl php7.4-fpm php7.4-gd \
-      php7.4-imagick php7.4-imap php7.4-intl php7.4-json php7.4-ldap \
-      php7.4-mbstring php7.4-mcrypt php7.4-mysql php7.4-opcache php7.4-pgsql \
-      php7.4-readline php7.4-soap php7.4-sqlite3 php7.4-xdebug php7.4-xml \
-      php7.4-xsl php7.4-zip \
-      php8.0-bcmath php8.0-cli php8.0-common php8.0-curl php8.0-fpm php8.0-gd \
-      php8.0-imagick php8.0-imap php8.0-intl php8.0-ldap php8.0-mbstring \
-      php8.0-mcrypt php8.0-mysql php8.0-opcache php8.0-pgsql php8.0-readline \
-      php8.0-soap php8.0-sqlite3 php8.6-xdebug php8.0-xml php8.0-xsl php8.0-zip"
+      php5.6-amqp php5.6-bcmath php5.6-cli php5.6-common php5.6-curl \
+      php5.6-fpm php5.6-gd php5.6-imagick php5.6-imap php5.6-intl php5.6-json \
+      php5.6-ldap php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-opcache \
+      php5.6-pgsql php5.6-readline php5.6-soap php5.6-sqlite3 php5.6-xdebug \
+      php5.6-xml php5.6-xsl php5.6-zip \
+      php7.0-amqp php7.0-bcmath php7.0-cli php7.0-common php7.0-curl \
+      php7.0-fpm php7.0-gd php7.0-imagick php7.0-imap php7.0-intl php7.0-json \
+      php7.0-ldap php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-opcache \
+      php7.0-pgsql php7.0-readline php7.0-soap php7.0-sqlite php7.0-xdebug3 \
+      php7.0-xml php7.0-xsl php7.0-zip \
+      php7.1-amqp php7.1-bcmath php7.1-cli php7.1-common php7.1-curl \
+      php7.1-fpm php7.1-gd php7.1-imagick php7.1-imap php7.1-intl php7.1-json \
+      php7.1-ldap php7.1-mbstring php7.1-mcrypt php7.1-mysql php7.1-opcache \
+      php7.1-pgsql php7.1-readline php7.1-soap php7.1-sqlite3 php7.1-xdebug \
+      php7.1-xml php7.1-xsl php7.1-zip \
+      php7.2-amqp php7.2-bcmath php7.2-cli php7.2-common php7.2-curl \
+      php7.2-fpm php7.2-gd php7.2-imagick php7.2-imap php7.2-intl php7.2-json \
+      php7.2-ldap php7.2-mbstring php7.2-mcrypt php7.2-mysql php7.2-opcache \
+      php7.2-pgsql php7.2-readline php7.2-soap php7.2-sqlite3 php7.2-xdebug \
+      php7.2-xml php7.2-xsl php7.2-zip \
+      php7.3-amqp php7.3-bcmath php7.3-cli php7.3-common php7.3-curl \
+      php7.3-fpm php7.3-gd php7.3-imagick php7.3-imap php7.3-intl php7.3-json \
+      php7.3-ldap php7.3-mbstring php7.3-mcrypt php7.3-mysql php7.3-opcache \
+      php7.3-pgsql php7.3-readline php7.3-soap php7.3-sqlite3 php7.3-xdebug \
+      php7.3-xml php7.3-xsl php7.3-zip \
+      php7.4-amqp php7.4-bcmath php7.4-cli php7.4-common php7.4-curl \
+      php7.4-fpm php7.4-gd php7.4-imagick php7.4-imap php7.4-intl php7.4-json \
+      php7.4-ldap php7.4-mbstring php7.4-mcrypt php7.4-mysql php7.4-opcache \
+      php7.4-pgsql php7.4-readline php7.4-soap php7.4-sqlite3 php7.4-xdebug \
+      php7.4-xml php7.4-xsl php7.4-zip \
+      php8.0-amqp php8.0-bcmath php8.0-cli php8.0-common php8.0-curl \
+      php8.0-fpm php8.0-gd php8.0-imagick php8.0-imap php8.0-intl php8.0-ldap \
+      php8.0-mbstring php8.0-mcrypt php8.0-mysql php8.0-opcache php8.0-pgsql \
+      php8.0-readline php8.0-soap php8.0-sqlite3 php8.6-xdebug php8.0-xml \
+      php8.0-xsl php8.0-zip"
       ;;
     '"seadrive"')
       wget -q https://linux-clients.seafile.com/seafile.asc -O /usr/share/keyrings/seafile-keyring.asc
