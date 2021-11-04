@@ -123,7 +123,7 @@ for SOFTWARE in $SOFTWARES; do
 
       ALERT_DOCKER_POSTINSTALL=1
       SOFTWARES=("${SOFTWARES[@]/$SOFTWARE}") # Retrait du logiciel de la liste
-      APT_INSTALL_STR="${APT_INSTALL_STR} docker-ce docker-ce-cli"
+      APT_INSTALL_STR="${APT_INSTALL_STR} docker-ce docker-ce-cli docker-compose"
       ;;
     '"golang"')
       add-apt-repository -y ppa:longsleep/golang-backports > /dev/null 2>&1
