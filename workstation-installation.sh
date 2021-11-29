@@ -144,7 +144,7 @@ for SOFTWARE in $SOFTWARES; do
       php7.0-amqp php7.0-bcmath php7.0-cli php7.0-common php7.0-curl \
       php7.0-fpm php7.0-gd php7.0-imagick php7.0-imap php7.0-intl php7.0-json \
       php7.0-ldap php7.0-mbstring php7.0-mcrypt php7.0-mysql php7.0-opcache \
-      php7.0-pgsql php7.0-readline php7.0-soap php7.0-sqlite php7.0-xdebug3 \
+      php7.0-pgsql php7.0-readline php7.0-soap php7.0-sqlite3 php7.0-xdebug \
       php7.0-xml php7.0-xsl php7.0-zip \
       php7.1-amqp php7.1-bcmath php7.1-cli php7.1-common php7.1-curl \
       php7.1-fpm php7.1-gd php7.1-imagick php7.1-imap php7.1-intl php7.1-json \
@@ -169,7 +169,7 @@ for SOFTWARE in $SOFTWARES; do
       php8.0-amqp php8.0-bcmath php8.0-cli php8.0-common php8.0-curl \
       php8.0-fpm php8.0-gd php8.0-imagick php8.0-imap php8.0-intl php8.0-ldap \
       php8.0-mbstring php8.0-mcrypt php8.0-mysql php8.0-opcache php8.0-pgsql \
-      php8.0-readline php8.0-soap php8.0-sqlite3 php8.6-xdebug php8.0-xml \
+      php8.0-readline php8.0-soap php8.0-sqlite3 php8.0-xdebug php8.0-xml \
       php8.0-xsl php8.0-zip"
       ;;
     '"seadrive"')
