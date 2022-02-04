@@ -25,7 +25,7 @@ CHOICES=(
   "volta" "Gestionnaire de version de node" OFF
 )
 
-TITLE="Workstation Installer v0.1"
+TITLE="Workstation Installer v0.2"
 NC='\033[0m'
 CYAN='\033[00;36m'
 GREEN='\033[00;32m'
