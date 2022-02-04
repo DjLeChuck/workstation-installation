@@ -96,6 +96,7 @@ if [ "" != "$FLATPAK_INSTALL_STR" ]; then
 fi
 
 ALERT_DOCKER_POSTINSTALL=0
+ALERT_SYMFONY_POSTINSTALL=0
 APT_INSTALL_STR=""
 for SOFTWARE in $SOFTWARES; do
   case $SOFTWARE in
@@ -184,6 +185,13 @@ for SOFTWARE in $SOFTWARES; do
       SOFTWARES=("${SOFTWARES[@]/$SOFTWARE}") # Retrait du logiciel de la liste
       APT_INSTALL_STR="${APT_INSTALL_STR} seadrive-gui"
       ;;
+    '"symfony"')
+      echo "deb [trusted=yes] https://repo.symfony.com/apt/ /" > /etc/apt/sources.list.d/symfony-cli.list
+
+      ALERT_SYMFONY_POSTINSTALL=1
+      SOFTWARES=("${SOFTWARES[@]/$SOFTWARE}") # Retrait du logiciel de la liste
+      APT_INSTALL_STR="${APT_INSTALL_STR} symfony-cli"
+      ;;
     '"tools"')
       SOFTWARES=("${SOFTWARES[@]/$SOFTWARE}") # Retrait du logiciel de la liste
       APT_INSTALL_STR="${APT_INSTALL_STR} terminator vim"
@@ -204,6 +212,12 @@ if [ "$ALERT_DOCKER_POSTINSTALL" -eq 1 ]; then
   systemctl enable docker.service
 fi
 
+# Post-installation de symfony
+if [ "$ALERT_SYMFONY_POSTINSTALL" -eq 1 ]; then
+  su -c "symfony version" $USER
+  su -c "symfony server:ca:install" $USER
+fi
+
 # Installation des cas particuliers restants
 echo -e "${CYAN}\nInstallation des logiciels restants...${NC}"
 for SOFTWARE in $SOFTWARES; do
@@ -218,13 +232,6 @@ if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
     GIT_PROMPT_FETCH_REMOTE_STATUS=0
     . ~/.bash-git-prompt/gitprompt.sh
 fi
-EOT
-      ;;
-    '"symfony"')
-      su -c "wget -q https://get.symfony.com/cli/installer -O - | bash" $USER
-      cat <<EOT>> $USER_HOME/.bashrc
-
-export PATH="\$HOME/.symfony/bin:\$PATH"
 EOT
       ;;
     '"volta"')
