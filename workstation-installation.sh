@@ -9,6 +9,7 @@ CHOICES=(
   "blackfire" "Outils de profiling" OFF
   "chrome" "Navigateur web" OFF
   "clamav" "Antivirus avec GUI" OFF
+  "composer" "Gestionnaire de dépendances PHP" OFF
   "docker" "Logiciel de conteneurisation" OFF
   "golang" "Langage de programmation" OFF
   "mattermost" "Logiciel de messagerie instantanée" OFF
@@ -233,6 +234,11 @@ if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
     . ~/.bash-git-prompt/gitprompt.sh
 fi
 EOT
+      ;;
+    '"composer"')
+      su -c "curl -s https://getcomposer.org/download/latest-stable/composer.phar -o $USER_HOME/composer.phar" $USER
+      mv $USER_HOME/composer.phar /usr/local/bin/composer
+      chmod +x /usr/local/bin/composer
       ;;
     '"volta"')
       su -c "curl -s https://get.volta.sh | bash" $USER
