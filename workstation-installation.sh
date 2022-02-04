@@ -225,7 +225,8 @@ fi
 # Post-installation de symfony
 if [ "$ALERT_SYMFONY_POSTINSTALL" -eq 1 ]; then
   su -c "symfony version" $USER
-  su -c "symfony server:ca:install" $USER
+  echo -e "${YELLOW}Afin de terminer l'installation de Symfony CLI, il faudra exécuter la commande suivante :${NC}"
+  echo -e "${YELLOW}* sudo symfony server:ca:install${NC}"
 fi
 
 # Installation des cas particuliers restants
