@@ -12,7 +12,7 @@ CHOICES=(
   "docker" "Logiciel de conteneurisation" OFF
   "golang" "Langage de programmation" OFF
   "mattermost" "Logiciel de messagerie instantanée" OFF
-  "php" "Langage de programmation 5.6 à 8.0 (avec les extensions)" OFF
+  "php" "Langage de programmation 5.6 à 8.1 (avec les extensions)" OFF
   "phpstorm" "IDE spécialisé pour PHP, HTML, CSS et JavaScript" OFF
   "postman" "Outil pour tester les API REST" OFF
   "seadrive" "Client pour SeaFile" OFF
@@ -170,7 +170,12 @@ for SOFTWARE in $SOFTWARES; do
       php8.0-fpm php8.0-gd php8.0-imagick php8.0-imap php8.0-intl php8.0-ldap \
       php8.0-mbstring php8.0-mcrypt php8.0-mysql php8.0-opcache php8.0-pgsql \
       php8.0-readline php8.0-soap php8.0-sqlite3 php8.0-xdebug php8.0-xml \
-      php8.0-xsl php8.0-zip"
+      php8.0-xsl php8.0-zip \
+      php8.1-amqp php8.1-bcmath php8.1-cli php8.1-common php8.1-curl \
+      php8.1-fpm php8.1-gd php8.1-imagick php8.1-imap php8.1-intl php8.1-ldap \
+      php8.1-mbstring php8.1-mcrypt php8.1-mysql php8.1-opcache php8.1-pgsql \
+      php8.1-readline php8.1-soap php8.1-sqlite3 php8.1-xdebug php8.1-xml \
+      php8.1-xsl php8.1-zip"
       ;;
     '"seadrive"')
       wget -q https://linux-clients.seafile.com/seafile.asc -O /usr/share/keyrings/seafile-keyring.asc
