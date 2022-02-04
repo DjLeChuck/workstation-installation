@@ -227,6 +227,8 @@ if [ "$ALERT_SYMFONY_POSTINSTALL" -eq 1 ]; then
   su -c "symfony version" $USER
   echo -e "${YELLOW}Afin de terminer l'installation de Symfony CLI, il faudra exécuter la commande suivante :${NC}"
   echo -e "${YELLOW}* sudo symfony server:ca:install${NC}"
+  echo -e "${YELLOW}Il faudra également paramétrer le serveur mandataire en automatique et y indiquer l'URL suivante :${NC}"
+  echo -e "${YELLOW}* http://127.0.0.1:7080/proxy.pac${NC}"
 fi
 
 # Installation des cas particuliers restants
