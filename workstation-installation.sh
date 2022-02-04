@@ -96,6 +96,7 @@ if [ "" != "$FLATPAK_INSTALL_STR" ]; then
   sudo -i -u $USER flatpak install flathub --noninteractive -y --or-update $FLATPAK_INSTALL_STR
 fi
 
+ALERT_BLACKFIRE_POSTINSTALL=0
 ALERT_DOCKER_POSTINSTALL=0
 ALERT_SYMFONY_POSTINSTALL=0
 APT_INSTALL_STR=""
@@ -105,6 +106,7 @@ for SOFTWARE in $SOFTWARES; do
       wget -q -O - https://packages.blackfire.io/gpg.key | apt-key add - > /dev/null 2>&1
       echo "deb http://packages.blackfire.io/debian any main" > /etc/apt/sources.list.d/blackfire.list
 
+      ALERT_BLACKFIRE_POSTINSTALL=1
       SOFTWARES=("${SOFTWARES[@]/$SOFTWARE}") # Retrait du logiciel de la liste
       APT_INSTALL_STR="${APT_INSTALL_STR} blackfire"
       ;;
@@ -205,6 +207,13 @@ if [ "" != "$APT_INSTALL_STR" ]; then
   echo -e "${CYAN}\nInstallation des paquets via apt...${NC}"
   apt update -qqq
   apt install -yqqq $APT_INSTALL_STR
+fi
+
+# Post-installation de blackfire
+if [ "$ALERT_BLACKFIRE_POSTINSTALL" -eq 1 ]; then
+  echo -e "${YELLOW}Afin de terminer l'installation de blackfire, il faudra exécuter les commandes suivantes :${NC}"
+  echo -e "${YELLOW}* sudo blackfire agent:config${NC}"
+  echo -e "${YELLOW}* sudo systemctl start blackfire-agent${NC}"
 fi
 
 # Post-installation de docker
