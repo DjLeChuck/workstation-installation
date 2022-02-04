@@ -62,7 +62,7 @@ apt update -qq
 apt upgrade -yqq
 apt install -yqq ca-certificates curl git gnupg gzip libnss3-tools wget
 
-SOFTWARES=$(whiptail --title "$TITLE" --checklist "Liste des logiciels à installer" 26 86 $((${#CHOICES[@]} / 3)) "${CHOICES[@]}" 3>&1 1>&2 2>&3)
+SOFTWARES=$(whiptail --title "$TITLE" --checklist "Liste des logiciels à installer" 26 88 $((${#CHOICES[@]} / 3)) "${CHOICES[@]}" 3>&1 1>&2 2>&3)
 
 # Quitte si aucun logiciel n'a été sélectionné
 if [ -z "$SOFTWARES" ]; then
@@ -236,8 +236,11 @@ echo -e "${CYAN}\nInstallation des logiciels restants...${NC}"
 for SOFTWARE in $SOFTWARES; do
   case $SOFTWARE in
     '"bash-git-prompt"')
-      su -c "git clone -q https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1" $USER
-      cat <<EOT>> $USER_HOME/.bashrc
+      # Si GIT_PROMPT_ONLY_IN_REPO est dans le .bashrc, c'est que bash-git-prompt est déjà installé
+      if ! grep -q "GIT_PROMPT_ONLY_IN_REPO" $USER_HOME/.bashrc ; then
+        su -c "git clone -q https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1" $USER
+
+        cat <<EOT>> $USER_HOME/.bashrc
 
 if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
     GIT_PROMPT_ONLY_IN_REPO=1
@@ -246,14 +249,20 @@ if [ -f ~/.bash-git-prompt/gitprompt.sh ]; then
     . ~/.bash-git-prompt/gitprompt.sh
 fi
 EOT
+      fi
       ;;
     '"composer"')
-      su -c "curl -s https://getcomposer.org/download/latest-stable/composer.phar -o $USER_HOME/composer.phar" $USER
-      mv $USER_HOME/composer.phar /usr/local/bin/composer
-      chmod +x /usr/local/bin/composer
+      if [ ! -f /usr/local/bin/composer ]; then
+        su -c "curl -s https://getcomposer.org/download/latest-stable/composer.phar -o $USER_HOME/composer.phar" $USER
+        mv $USER_HOME/composer.phar /usr/local/bin/composer
+        chmod +x /usr/local/bin/composer
+      fi
       ;;
     '"volta"')
-      su -c "curl -s https://get.volta.sh | bash" $USER
+      # Si VOLTA_HOME est dans le .bashrc, c'est que Volta est déjà installé
+      if ! grep -q "VOLTA_HOME" $USER_HOME/.bashrc ; then
+        su -c "curl -s https://get.volta.sh | bash" $USER
+      fi
       ;;
   esac
 done
