@@ -24,8 +24,8 @@
       gpg_key_name: php.gpg
       tags: ['gpg-php']
 
-    #- role: umanit.full_php
-    #  tags: ['full_php']
+    - role: umanit.full_php
+      tags: ['full_php']
 
 
     - role: umanit.gpg
@@ -35,6 +35,21 @@
 
     - role: brave
       tags: ['brave']
+
+
+    - role: umanit.gpg
+      gpg_key_url: https://downloads.1password.com/linux/keys/1password.asc
+      gpg_key_name: 1password-archive-keyring.gpg
+      tags: ['gpg-1password']
+
+    - role: umanit.gpg
+      gpg_key_url: https://downloads.1password.com/linux/keys/1password.asc
+      gpg_key_path: /usr/share/debsig/keyrings/AC2D62742012EA22/
+      gpg_key_name: debsig.gpg
+      tags: ['gpg-1password']
+
+    - role: 1password
+      tags: ['1password']
 
 
     - role: composer

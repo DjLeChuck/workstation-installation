@@ -1,7 +1,7 @@
 ---
 - name: "Vérification de l'existence de {{ gpg_key_name }}"
   stat:
-    path: "/usr/share/keyrings/{{ gpg_key_name }}"
+    path: "{{ gpg_key_path }}{{ gpg_key_name }}"
   register: __gpg_key_stat
 
 - name: "Téléchargement de {{ gpg_key_name }}"
@@ -21,7 +21,7 @@
   when: not __gpg_key_stat.stat.exists
 
 - name: "Export de {{ gpg_key_name }}"
-  command: "gpg --no-default-keyring --keyring /tmp/temp-{{ gpg_key_name }} --export --output /usr/share/keyrings/{{ gpg_key_name }}"
+  command: "gpg --no-default-keyring --keyring /tmp/temp-{{ gpg_key_name }} --export --output {{ gpg_key_path }}{{ gpg_key_name }}"
   when: not __gpg_key_stat.stat.exists
 
 - name: Nettoyage
