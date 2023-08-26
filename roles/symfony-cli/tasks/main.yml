@@ -1,19 +1,27 @@
 ---
-- name: Récupération du script d'installation
+- name: Vérification de l’existence
+  stat:
+    path: "/etc/apt/sources.list.d/symfony-stable.list"
+  register: __symfony_apt_file
+
+- name: Récupération du script d’installation
   get_url:
     url: "{{ symfony_cli_installation_script }}"
     dest: /tmp/
     mode: '+x'
   register: __symfony_cli_installation_script
+  when: not __symfony_apt_file.stat.exists
 
 - name: Ajout du dépôt
   command:
     cmd: "{{ __symfony_cli_installation_script.dest }}"
+  when: not __symfony_apt_file.stat.exists
 
 - name: Retrait du script d'installation
   file:
     path: "{{ __symfony_cli_installation_script.dest }}"
     state: absent
+  when: not __symfony_apt_file.stat.exists
 
 - name: Installation du binaire
   apt:
