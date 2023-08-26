@@ -22,10 +22,19 @@
         =R5tk
         -----END PGP PUBLIC KEY BLOCK-----
       gpg_key_name: php.gpg
-      tags: ['gpg']
+      tags: ['gpg-php']
 
-    - role: umanit.full_php
-      tags: ['full_php']
+    #- role: umanit.full_php
+    #  tags: ['full_php']
+
+
+    - role: umanit.gpg
+      gpg_key_url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+      gpg_key_name: brave-browser-archive-keyring.gpg
+      tags: ['gpg-brave']
+
+    - role: brave
+      tags: ['brave']
 
 
     - role: composer

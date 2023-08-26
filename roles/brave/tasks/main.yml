@@ -1,0 +1,13 @@
+---
+- name: Ajout du dépôt
+  apt_repository:
+    repo: deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main
+    state: present
+    filename: brave
+
+- name: Installation
+  apt:
+    name: brave-browser
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
