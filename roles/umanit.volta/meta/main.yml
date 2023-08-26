@@ -1,0 +1,12 @@
+galaxy_info:
+  author: umanit
+  description: Permet d'installer Volta
+  company: UmanIT
+  license: MIT
+  min_ansible_version: 2.1
+  galaxy_tags:
+    - volta
+    - node
+    - yarn
+
+dependencies: []

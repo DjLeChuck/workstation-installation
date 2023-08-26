@@ -1,0 +1,3 @@
+---
+volta_user: "{{ lookup('env', 'USER') }}"
+volta_user_home: "{{ lookup('env', 'HOME') }}"

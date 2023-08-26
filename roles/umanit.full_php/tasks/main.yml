@@ -1,0 +1,27 @@
+---
+- name: Ajout du dépôt
+  apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/php.gpg] https://ppa.launchpadcontent.net/ondrej/php/ubuntu/ {{ ansible_facts.distribution_release }} main"
+    state: present
+    filename: ondrej-php
+
+- name: Installation
+  apt:
+    name: "{{ ['php'] | product(full_php_versions_extensions_product) | map('join') | list | difference(full_php_unexisting_extensions) }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Désactivation de xdebug
+  lineinfile:
+    path: "/etc/php/{{ item }}/mods-available/xdebug.ini"
+    regexp: '^zend_extension=xdebug\.so'
+    line: ";zend_extension=xdebug.so"
+  loop: "{{ full_php_versions }}"
+
+- name: Désactivation des services systemd
+  systemd:
+    name: "php{{ item }}-fpm.service"
+    state: stopped
+    enabled: false
+  loop: "{{ full_php_versions }}"

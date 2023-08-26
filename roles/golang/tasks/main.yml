@@ -1,0 +1,29 @@
+---
+- name: Récupération de la version actuelle
+  shell:
+    cmd: /usr/local/go/bin/go version
+    removes: /usr/local/go/bin/go
+  register: __golang_version
+  changed_when: false
+
+- name: Retrait de la version existante
+  file:
+    path: /usr/local/go
+    state: absent
+  when: __golang_version.rc != 0 or __golang_version.stdout.find(golang_version) == -1
+
+- name: Installation dans /usr/local
+  unarchive:
+    remote_src: true
+    src: "https://go.dev/dl/go{{ golang_version }}.linux-amd64.tar.gz"
+    dest: /usr/local
+  when: __golang_version.rc != 0 or __golang_version.stdout.find(golang_version) == -1
+
+- name: Ajout au $PATH
+  blockinfile:
+    path: "{{ lookup('env', 'HOME') }}/.bashrc"
+    marker_begin: BEGIN golang
+    marker_end: END golang
+    block: |
+      export PATH=$PATH:/usr/local/go/bin
+      export PATH="$HOME/go/bin:$PATH"

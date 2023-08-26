@@ -1,0 +1,15 @@
+galaxy_info:
+  author: umanit
+  description: Installe toutes les versions de PHP et leurs extensions
+  company: UmanIT
+  license: MIT
+  min_ansible_version: 2.1
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  galaxy_tags:
+    - php
+    - extensions
+
+dependencies: []

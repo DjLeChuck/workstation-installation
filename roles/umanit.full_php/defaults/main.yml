@@ -1,0 +1,45 @@
+---
+full_php_versions:
+  - 5.6
+  - 7.0
+  - 7.1
+  - 7.2
+  - 7.3
+  - 7.4
+  - 8.0
+  - 8.1
+  - 8.2
+
+full_php_extensions:
+  - amqp
+  - bcmath
+  - cli
+  - common
+  - curl
+  - fpm
+  - gd
+  - imagick
+  - imap
+  - intl
+  - json
+  - ldap
+  - mbstring
+  - mcrypt
+  - mysql
+  - opcache
+  - pgsql
+  - readline
+  - soap
+  - sqlite3
+  - ssh2
+  - xdebug
+  - xml
+  - xsl
+  - zip
+
+full_php_versions_extensions_product: "{{ full_php_versions | product(full_php_extensions) | map('join', '-') | list }}"
+
+full_php_unexisting_extensions:
+  - php8.0-json
+  - php8.1-json
+  - php8.2-json

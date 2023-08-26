@@ -1,0 +1,14 @@
+galaxy_info:
+  author: umanit
+  description: Installation de Docker
+  company: UmanIT
+  license: MIT
+  min_ansible_version: 2.1
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  galaxy_tags:
+    - docker
+
+dependencies: []

@@ -1,0 +1,33 @@
+---
+- name: "Vérification de l'existence de {{ gpg_key_name }}"
+  stat:
+    path: "/usr/share/keyrings/{{ gpg_key_name }}"
+  register: __gpg_key_stat
+
+- name: "Téléchargement de {{ gpg_key_name }}"
+  get_url:
+    url: "{{ gpg_key_url }}"
+    dest: "/tmp/{{ gpg_key_name }}"
+  when: gpg_key_url is defined and not __gpg_key_stat.stat.exists
+
+- name: "Enregistrement de {{ gpg_key_name }}"
+  copy:
+    dest: "/tmp/{{ gpg_key_name }}"
+    content: "{{ gpg_key_content }}"
+  when: gpg_key_content is defined and not __gpg_key_stat.stat.exists
+
+- name: "Import de {{ gpg_key_name }}"
+  command: "gpg --no-default-keyring --keyring /tmp/temp-{{ gpg_key_name }} --import /tmp/{{ gpg_key_name }}"
+  when: not __gpg_key_stat.stat.exists
+
+- name: "Export de {{ gpg_key_name }}"
+  command: "gpg --no-default-keyring --keyring /tmp/temp-{{ gpg_key_name }} --export --output /usr/share/keyrings/{{ gpg_key_name }}"
+  when: not __gpg_key_stat.stat.exists
+
+- name: Nettoyage
+  file:
+    path: "/tmp/{{ item }}"
+    state: absent
+  loop:
+    - "temp-{{ gpg_key_name }}"
+    - "{{ gpg_key_name }}"

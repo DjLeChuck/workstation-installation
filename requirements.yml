@@ -1,0 +1,15 @@
+- name: umanit.docker
+  scm: git
+  src: git@holygit.umanit.fr:umaninfra/ansible-subgroup/roles/umanit.docker.git
+
+- name: umanit.full_php
+  scm: git
+  src: git@holygit.umanit.fr:umaninfra/ansible-subgroup/roles/umanit.full_php.git
+
+- name: umanit.gpg
+  scm: git
+  src: git@holygit.umanit.fr:umaninfra/ansible-subgroup/roles/umanit.gpg.git
+
+- name: umanit.volta
+  scm: git
+  src: git@holygit.umanit.fr:umaninfra/ansible-subgroup/roles/umanit.volta.git

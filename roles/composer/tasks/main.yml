@@ -1,0 +1,25 @@
+---
+- name: Vérification de l'existence
+  stat:
+    path: "{{ composer_executable_file }}"
+  register: __composer_executable_file
+
+- name: Installation
+  script:
+    chdir: /tmp
+    cmd: ./install-composer.sh
+  when: not __composer_executable_file.stat.exists
+
+- name: "Déplacement dans {{ composer_executable_file }}"
+  copy:
+    remote_src: yes
+    src: /tmp/composer.phar
+    dest: "{{ composer_executable_file }}"
+    owner: "{{ lookup('env', 'USER') }}"
+    mode: '0755'
+  when: not __composer_executable_file.stat.exists
+
+- name: Nettoyage
+  file:
+    path: /tmp/composer.phar
+    state: absent

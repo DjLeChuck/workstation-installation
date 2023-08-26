@@ -1,0 +1,7 @@
+---
+- name: __symfony-cli_configure_post_install
+  debug:
+    msg: >-
+      Afin de terminer l'installation de Symfony CLI, il faut paramétrer le
+      serveur mandataire (Paramètres > Réseau) en automatique et y indiquer
+      l'URL suivante : http://127.0.0.1:7080/proxy.pac

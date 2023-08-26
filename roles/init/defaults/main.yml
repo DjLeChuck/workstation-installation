@@ -1,0 +1,35 @@
+---
+init_packages:
+  - alacarte
+  - ca-certificates
+  - curl
+  - flameshot
+  - git
+  - git-flow
+  - gnupg
+  - gzip
+  - jpegoptim
+  - libnss3-tools
+  - mysql-client
+  - openvpn
+  - openssh-server
+  - postgresql-client
+  - pngquant
+  - python3-apt
+  - stow
+  - terminator
+  - unzip
+  - vim
+  - webp
+  - wget
+
+init_snap_packages:
+  - discord
+  - mattermost-desktop
+  - postman
+  - spotify
+  - vlc
+
+init_snap_classic_packages:
+  - goland
+  - phpstorm

@@ -1,0 +1,26 @@
+---
+- name: Vérification de l'existence
+  stat:
+    path: "{{ volta_user_home }}/.volta/volta.lock"
+  register: __volta_lock_file
+
+- name: Récupération du script d'installation
+  get_url:
+    url: https://get.volta.sh
+    dest: /tmp/volta.sh
+  when: not __volta_lock_file.stat.exists
+
+- name: Installation
+  shell:
+    cmd: bash /tmp/volta.sh --skip-setup
+    creates: "{{ volta_user_home }}/.volta/volta.lock"
+  become_user: "{{ volta_user }}"
+
+- name: Configuration
+  blockinfile:
+    path: "{{ volta_user_home }}/.bashrc"
+    marker_begin: BEGIN volta
+    marker_end: END volta
+    block: |
+      export VOLTA_HOME="$HOME/.volta"
+      export PATH="$VOLTA_HOME/bin:$PATH"

@@ -1,0 +1,28 @@
+---
+- name: Récupération du script d'installation
+  get_url:
+    url: "{{ symfony_cli_installation_script }}"
+    dest: /tmp/
+    mode: '+x'
+  register: __symfony_cli_installation_script
+
+- name: Ajout du dépôt
+  command:
+    cmd: "{{ __symfony_cli_installation_script.dest }}"
+
+- name: Retrait du script d'installation
+  file:
+    path: "{{ __symfony_cli_installation_script.dest }}"
+    state: absent
+
+- name: Installation du binaire
+  apt:
+    name: symfony-cli
+    state: present
+
+- name: Installation du certificat
+  shell:
+    cmd: symfony server:ca:install
+    creates: "{{ lookup('env', 'HOME') }}/.symfony5/certs/rootCA.pem"
+  become_user: "{{ lookup('env', 'USER') }}"
+  notify: __symfony-cli_configure_post_install
