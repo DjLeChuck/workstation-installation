@@ -1,0 +1,4 @@
+---
+stow_user: "{{ lookup('env', 'USER') }}"
+stow_user_home: "{{ lookup('env', 'HOME') }}"
+stow_dotfiles_dir: "{{ stow_user_home }}/.dotfiles"

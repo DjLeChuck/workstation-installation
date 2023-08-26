@@ -75,3 +75,7 @@
 
     - role: umanit.volta
       tags: ['volta']
+
+
+    - role: stow
+      tags: ['stow']

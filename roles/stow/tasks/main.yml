@@ -1,0 +1,49 @@
+---
+- name: Installation de stow
+  apt:
+    name: stow
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: stow - bash
+  become_user: "{{ stow_user }}"
+  shell:
+    cmd: stow bash
+    creates: "{{ volta_user_home }}/.bashrc"
+    chdir: "{{ stow_dotfiles_dir }}"
+
+- name: stow - git
+  become_user: "{{ stow_user }}"
+  shell:
+    cmd: stow git
+    creates: "{{ volta_user_home }}/.gitconfig"
+    chdir: "{{ stow_dotfiles_dir }}"
+
+- name: stow - misc
+  become_user: "{{ stow_user }}"
+  shell:
+    cmd: stow misc
+    creates: "{{ volta_user_home }}/.cobra.yml"
+    chdir: "{{ stow_dotfiles_dir }}"
+
+- name: stow - ssh
+  become_user: "{{ stow_user }}"
+  shell:
+    cmd: stow ssh
+    creates: "{{ volta_user_home }}/.ssh/config"
+    chdir: "{{ stow_dotfiles_dir }}"
+
+- name: stow - starship
+  become_user: "{{ stow_user }}"
+  shell:
+    cmd: stow starship
+    creates: "{{ volta_user_home }}/.config/starship.toml"
+    chdir: "{{ stow_dotfiles_dir }}"
+
+- name: stow - symfony
+  become_user: "{{ stow_user }}"
+  shell:
+    cmd: stow symfony
+    creates: "{{ volta_user_home }}/.symfony5/proxy.json"
+    chdir: "{{ stow_dotfiles_dir }}"
