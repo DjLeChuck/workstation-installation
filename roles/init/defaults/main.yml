@@ -7,7 +7,9 @@ init_packages:
   - git-flow
   - gnupg
   - gzip
+  - imagemagick
   - jpegoptim
+  - libfuse2
   - libnss3-tools
   - mysql-client
   - postgresql-client
