@@ -1,0 +1,4 @@
+---
+starship_executable_file: /usr/local/bin/starship
+starship_script_url: https://starship.rs/install.sh
+starship_dest_path: /tmp/starship.sh

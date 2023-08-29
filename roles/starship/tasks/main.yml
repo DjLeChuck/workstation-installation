@@ -1,0 +1,21 @@
+---
+-   name: Vérification de l'existence
+    stat:
+        path: "{{ starship_executable_file }}"
+    register: __starship_executable_file
+
+-   name: Récupération du script d’installation
+    get_url:
+        url: "{{ starship_script_url }}"
+        dest: "{{ starship_dest_path }}"
+    when: not __starship_executable_file.stat.exists
+
+-   name: Exécution du script
+    command: "sh {{ starship_dest_path }} -f"
+    when: not __starship_executable_file.stat.exists
+
+-   name: Nettoyage
+    file:
+        path: "{{ starship_dest_path }}"
+        state: absent
+    when: not __starship_executable_file.stat.exists
