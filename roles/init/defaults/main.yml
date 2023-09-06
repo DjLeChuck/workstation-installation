@@ -7,6 +7,7 @@ init_packages:
   - git-flow
   - gnupg
   - gzip
+  - htop
   - imagemagick
   - jpegoptim
   - libfuse2
