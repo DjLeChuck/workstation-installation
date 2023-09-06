@@ -25,6 +25,7 @@ full_php_extensions:
   - ldap
   - mbstring
   - mcrypt
+  - memcached
   - mysql
   - opcache
   - pgsql
