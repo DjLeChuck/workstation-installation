@@ -25,7 +25,7 @@
             tags: ['gpg-php']
 
         -   role: umanit.full_php
-            tags: ['full_php']
+            tags: ['php']
 
 
         -   role: umanit.gpg
