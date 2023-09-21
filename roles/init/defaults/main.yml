@@ -20,6 +20,7 @@ init_packages:
   - unzip
   - vim
   - webp
+  - webp-pixbuf-loader
   - wget
 
 init_snap_packages:
@@ -32,3 +33,6 @@ init_snap_packages:
 init_snap_classic_packages:
   - goland
   - phpstorm
+
+init_apt_repositories:
+  - ppa:helkaluin/webp-pixbuf-loader

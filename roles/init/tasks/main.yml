@@ -1,4 +1,9 @@
 ---
+- name: Ajout des dépôts apt
+  apt_repository:
+    repo: "{{ item }}"
+  loop: "{{ init_apt_repositories }}"
+
 - name: Installation des paquets apt
   apt:
     name: "{{ init_packages }}"
