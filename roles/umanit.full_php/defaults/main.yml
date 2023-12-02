@@ -9,6 +9,7 @@ full_php_versions:
   - 8.0
   - 8.1
   - 8.2
+  - 8.3
 
 full_php_extensions:
   - amqp
@@ -44,3 +45,5 @@ full_php_unexisting_extensions:
   - php8.0-json
   - php8.1-json
   - php8.2-json
+  - php8.3-json
+  - php8.3-mcrypt
